@@ -1,40 +1,37 @@
-*{
-    margin: 0px;
-    padding:0px;
-
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
-.navBar{
-display: flex;
-   justify-content: space-between;
-   align-items:center;
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-     width:auto;
-    height: 100px;
+  width: auto;
+  height: 100px;
 
-    padding-left: 2%;
+  padding-left: 2%;
 }
 
+.logo {
+  height: 70px;
+  width: 70px;
 
-.logo{
-    height:70px;
-    width:70px;
-    
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 }
 .logo:hover {
   transform: none;
 }
 
-.logobtn{
-    height:auto;
-    width: auto;
+.logobtn {
+  height: auto;
+  width: auto;
 
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 }
-
 
 .search {
   width: 150px;
@@ -55,83 +52,69 @@ display: flex;
   border-color: #888;
 }
 
+.Authecation {
+  width: 30%;
 
-.Authecation{
- 
-    width:30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding:10px;
-
-
+  padding: 10px;
 }
 
-.login{
-    width: 100px;
-    height: 40px;
-    cursor: pointer;
-    background-color: white;
+.login {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
 
   font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
-
-
-
 }
 
-.login:hover{
-    background-color: #a09e9e;
-    color: white;
-    transition: 0.3s;
-    font-size: 60%;
-
+.login:hover {
+  background-color: #a09e9e;
+  color: white;
+  transition: 0.3s;
+  font-size: 60%;
 }
 
-.signup{
-    width: auto;
-    height: 40px;
-  
-    background-color: #a09e9e;
-    cursor: pointer;
-     font-family: "Noto Serif", serif;
+.signup {
+  width: auto;
+  height: 40px;
+
+  background-color: #a09e9e;
+  cursor: pointer;
+  font-family: "Noto Serif", serif;
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
 
   font-size: 60%;
-  
 }
-.signup:hover{
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    transition: 0.3s;
-    font-size: 60%;
-
+.signup:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  transition: 0.3s;
+  font-size: 60%;
 }
 
-.menuBtnsDiv{
-
+.menuBtnsDiv {
   display: flex;
   flex-wrap: wrap; /* Allows wrapping on small screens */
   gap: 0.5rem;
   justify-content: center;
   padding: 1rem;
-
 }
 
-
-img:hover{
+img:hover {
   transform: translateY(-10px); /* moves image up */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* optional shadow effect */
 }
 
-
-.menuBtn{
+.menuBtn {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   background-color: #ffffff;
@@ -139,52 +122,51 @@ img:hover{
 
   cursor: pointer;
 
-font-family: "Noto Serif", serif;
-font-weight: 600;
+  font-family: "Noto Serif", serif;
+  font-weight: 600;
 
-border-bottom: 2=1px solid grey;
-border-top: none;
-border-left: none;
-border-right: none;
+  border-bottom: 2=1px solid grey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 
- transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.menuBtn:hover{
+.menuBtn:hover {
   transform: translateY(-1px); /* moves menu buttons up */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* optional shadow effect */
 }
 
-
-.menuBtn:hover{
-border-bottom: 2px solid rgb(0, 0, 0);
-border-top: none;
-border-left: none;
-border-right: none;
+.menuBtn:hover {
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
-.hrLine{
-    width: 80%;
-    height: 1px;
-    background-color: black;
-    margin: 0 auto;
-
+.hrLine {
+  width: 85%;
+  height: 1px;
+  background-color: black;
+  margin: 0 auto;
 }
-.hrLineforText{
-    width: 100%;
-    height: 1px;
-    background-color: black;
-    margin: 0 auto;
-    margin-top: 2%;
-
+.hrLineforText {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin: 0 auto;
+  margin-top: 2%;
 }
 
 .newsContainer {
-  max-width: 85%;
+  width: 85%;
   margin: auto;
-
-
-
   margin-top: 20px;
+  max-width: 1200px; /* container won’t shrink beyond this */
+    display: flex;
+    justify-content: center; /* center cards in container */
+  gap: 20px; /* space between cards */
+  flex-direction: column;
 }
 
 .NewsCard {
@@ -194,6 +176,9 @@ border-right: none;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  flex: 1 1 300px; /* grow, shrink, min 300px */
+  max-width: 100%; /* optional */
+  box-sizing: border-box;
   
 }
 
@@ -207,25 +192,31 @@ border-right: none;
 .title {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
-    border-top: 1px solid #ddd;
-    margin-top: 10px;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+
+    font-family: "Fresca", sans-serif;
+
+  font-style: normal;
 }
 
 .newsDescription {
   font-size: 0.95rem;
   margin-bottom: 0.8rem;
+  font-family: "Noto Serif", serif;
 }
-
 
 .newsMetaTop {
   display: flex;
   justify-content: space-between;
   font-size: 0.95rem;
   color: #000000;
-  font-weight: bold;
+  font-weight: 400;
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
 }
 
-.newsMetaBottom{
+.newsMetaBottom {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
@@ -233,29 +224,26 @@ border-right: none;
   color: #000000;
   border-top: 1px solid #ddd;
   padding-top: 1rem;
+  font-weight: 400;
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+   word-break: break-word;
 }
 
-
-img{
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 img:hover {
   transform: translateY(-10px); /* moves image up */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* optional shadow effect */
 }
 
-
-
-
-
-
-
-
 @media (max-width: 600px) {
   .newsContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr (80%);
+    
   }
 
   .DoubleColum {
@@ -263,9 +251,8 @@ img:hover {
   }
 }
 
-
 @media (max-width: 600px) {
-.newsContainer-Flipped{
+  .newsContainer-Flipped {
     grid-template-columns: 1fr;
   }
 
@@ -281,10 +268,6 @@ img:hover {
   }
 }
 
-
-
-
-
 /* Responsive: Stack on smaller screens */
 @media (max-width: 768px) {
   .news-grid {
@@ -297,33 +280,14 @@ img:hover {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Optional: make it 100% on mobile */
 @media (max-width: 600px) {
   .search {
-    width: 50%;
+    width: 20%;
   }
 
   .search:focus,
   .search:hover {
-    width: 100%;
+    width: 40%;
   }
 }
-

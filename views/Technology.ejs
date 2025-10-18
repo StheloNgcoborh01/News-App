@@ -1,18 +1,16 @@
-
-
 <%- include("partials/navBar") %>
     <!--the actullay news-->
 
     <div class="newsContainer">
 
-      <% if (articles  && articles.length > 0) { %>
-      <% { articles.forEach(article => { %>
+      <% if (technologyArticles  && technologyArticles.length > 0) { %>
+      <% { technologyArticles.forEach(article => { %>
           
       <div class="NewsCard">
         <img class="newsImage" src = "<%= article.urlToImage %> " alt="News Image" />
 
         <div class="newsMetaTop">
-          <span> cetogory: <%= article.q %> </span>
+          <span> cetogory:<%= article.q %></span>
           <span>date : <%= article.publishedAt %>  </span>
         </div>
 
@@ -34,7 +32,7 @@
       </div>
 
 
-    <script >
+       <script >
       function Navigate(route){
         window.location.href = route;
       }

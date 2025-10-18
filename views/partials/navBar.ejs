@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeloNews</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- nav bar part-->
+    <div class="navBar">
+      <button class="logobtn">
+        <img
+          class="logo"
+          src="myImages\TeloNews.png"
+          alt="TeloNews Logo"
+          onclick="window.location.href='/'"
+        />
+      </button>
+
+      <input type="text" class="search" placeholder="Search for news..." />
+
+      <div class="Authecation">
+        <button class="login">Sign In</button>
+        <button class="signup">Create account</button>
+      </div>
+    </div>
+    <!-- nav bar part-->
+
+    <div class="menuBtnsDiv">
+      <button class="menuBtn"  onclick = "Navigate('general')" >General</button>
+      <button class="menuBtn" onclick = "Navigate('health')" >Health</button>
+      <button class="menuBtn" onclick = "Navigate('Science')" >Science</button>
+      <button class="menuBtn" onclick = "Navigate('technology')" >Technology</button>
+      <button class="menuBtn" onclick = "Navigate('Entertainment')">Entertainment</button>
+       <button class="menuBtn" onclick ="Navigate('sports')">Sports</button>
+    </div>
+
+    <hr class="hrLine" />

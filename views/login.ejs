@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+     <div class="form-container">
+      <p class="title">Welcome Back</p>
+
+        <form class="form" Action = "/login"  method="POST"> 
+
+        <input type="email" name ="email" class="input" placeholder="Email">
+        <input type="password" name = "password" class="input" placeholder="Password">
+    
+        <button class="form-btn" type="submit" >Log in </button>
+      </form>
+ <br>
+      <p class="sign-up-label">
+        Don't have an account?<a href ="/signUp" class="sign-up-link"  role ="button" >Sign Up</a>
+      </p>
+    
+    </div>
+
+
+
+        <script >
+      function Navigate(route){
+        window.location.href = route;
+      }
+
+    </script>
+</body>
+</html>

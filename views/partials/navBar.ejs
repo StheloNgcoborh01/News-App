@@ -30,8 +30,17 @@
       <input type="text" class="search" placeholder="Search for news..." />
 
       <div class="Authecation">
-        <button class="login">Sign In</button>
-        <button class="signup">Create account</button>
+        <% if (isLoggedin) { %>
+         <button class="more"  onclick ="Navigate('About')"> About us</button>
+        <button class="logout" onclick ="Navigate('logout')">Logout</button>
+     
+
+      <%  } else { %>
+        <button class="login" onclick ="Navigate('login')">Sign In</button>
+        <button class="signup" onclick ="Navigate('signUp')" >Create account</button>
+       <%  } %>
+
+
       </div>
     </div>
     <!-- nav bar part-->

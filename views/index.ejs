@@ -12,7 +12,7 @@
         <img class="newsImage" src = "<%= article.urlToImage %> " alt="News Image" />
 
         <div class="newsMetaTop">
-          <span> cetogory: <%= article.q %> </span>
+          <span> category: All </span>
           <span>date : <%= article.publishedAt %>  </span>
         </div>
 
@@ -20,19 +20,26 @@
         <p class="newsDescription"><%= article.description %> </p>
 
         <div class="newsMetaBottom">
-          <span>Author: <%= article.author %> </span>
-          <span>Name:  <%= article.name %> </span>
-          <span >URL:  <%= article.url %>  </span>
-          <span>Country:<%= article.country %> </span>
+          <span class ="author">Author: <%= article.author %> </span>
+          <span >Name:  <%= article.source.name %> </span>
+          <span class="url"> <a  class="url" href ="<%= article.url %>" >  Click here To view more About the post on External Website</a> </span>
+          <span>Country: Universal </span>
+        </div>
         </div>
   
        <% })}; %>
           <% } %>
 
         <br />
-
+        
       </div>
 
+     
+
+ <% if (!isLoggedin) { %>
+    <hr class="hrLine" />
+ <h1 class="alertuser" > login in Or Sign u to see more posts</h1>
+ <% } %>
 
     <script >
       function Navigate(route){

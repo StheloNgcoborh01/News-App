@@ -26,12 +26,16 @@
           onclick="window.location.href='/'"
         />
       </button>
-
-      <input type="text" class="search" placeholder="Search for news..." />
+    <form action="/search" method="POST">
+      <div class="searchwrapper">
+      <input type="text" name = searchInput class="search" placeholder="Search for news..." />
+        <button class="seachButton" type ="submit"> search</button>
+      </div>
+    </form>
 
       <div class="Authecation">
         <% if (isLoggedin) { %>
-         <button class="more"  onclick ="Navigate('About')"> About us</button>
+         <button class="more"  onclick="Navigate('https://github.com/StheloNgcoborh01')"> About us</button>
         <button class="logout" onclick ="Navigate('logout')">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="15" height="15" viewBox="0 0 256 256" xml:space="preserve">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -40,17 +44,13 @@
 	<path d="M 60.554 90 c -1.933 0 -3.5 -1.567 -3.5 -3.5 v -2.236 c 0 -1.933 1.567 -3.5 3.5 -3.5 s 3.5 1.567 3.5 3.5 V 86.5 C 64.054 88.433 62.486 90 60.554 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
 	<path d="M 80.754 68.741 l -8.515 -8.515 c -1.367 -1.367 -3.582 -1.367 -4.949 0 c -1.367 1.366 -1.367 3.583 0 4.949 l 2.54 2.54 H 36.137 c -1.933 0 -3.5 1.567 -3.5 3.5 s 1.567 3.5 3.5 3.5 h 33.693 l -2.541 2.541 c -1.367 1.367 -1.367 3.583 0 4.949 c 0.684 0.684 1.579 1.025 2.475 1.025 s 1.792 -0.342 2.475 -1.025 l 8.515 -8.516 C 82.121 72.323 82.121 70.107 80.754 68.741 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
 </g>
-</svg>
-          
-          
+</svg>   
           Logout</button>
-     
 
       <%  } else { %>
         <button class="login" onclick ="Navigate('login')">Sign In</button>
         <button class="signup" onclick ="Navigate('signUp')" >Create account</button>
        <%  } %>
-
 
       </div>
     </div>

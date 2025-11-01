@@ -36,7 +36,7 @@
       <div class="Authecation">
         <% if (isLoggedin) { %>
          <button class="more"  onclick="Navigate('https://github.com/StheloNgcoborh01')"> About us</button>
-        <button class="logout" onclick ="Navigate('logout')">
+        <button class="logout" onclick ="Navigate('/auth/logout')">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="15" height="15" viewBox="0 0 256 256" xml:space="preserve">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
 	<path d="M 36.137 34.78 c -9.589 0 -17.39 -7.801 -17.39 -17.39 C 18.747 7.801 26.548 0 36.137 0 s 17.39 7.801 17.39 17.39 C 53.527 26.979 45.726 34.78 36.137 34.78 z M 36.137 7 c -5.729 0 -10.39 4.661 -10.39 10.39 s 4.661 10.39 10.39 10.39 s 10.39 -4.661 10.39 -10.39 S 41.866 7 36.137 7 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
@@ -48,8 +48,8 @@
           Logout</button>
 
       <%  } else { %>
-        <button class="login" onclick ="Navigate('login')">Sign In</button>
-        <button class="signup" onclick ="Navigate('signUp')" >Create account</button>
+        <button class="login" onclick ="Navigate('/auth/login')">Sign In</button>
+        <button class="signup" onclick ="Navigate('/auth/signUp')" >Create account</button>
        <%  } %>
 
       </div>

@@ -33,6 +33,26 @@
 
   background: none;
   border: none;
+
+}
+
+
+
+.insideLogo{
+  height: auto;
+  width: auto;
+
+  background: none;
+  border: none;
+
+  position: relative;
+  left: 35%;
+
+}
+
+.insideLogo:hover{
+transform: none;
+
 }
 
 .search {
@@ -161,6 +181,8 @@
 
 font-size: 80%;
 }
+
+
 
 .more:hover{
 

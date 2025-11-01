@@ -8,32 +8,27 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
     
      <div class="form-container">
+      <p class="title">We have sent 5 digit code on email please verify here</p>
 
-         <button class="insideLogo" >
-        <img
-          class="logo"
-          src="/myImages/TeloNews.png"
-          alt="TeloNews Logo"
-        />
-      </button>
-      <p class="title">Welcome Back</p>
+        <form class="form" action = "/auth/verify"  method="POST"> 
 
-        <form class="form" Action = "/auth/login"  method="POST"> 
-
-        <input type="email" name ="email" class="input" placeholder="Email">
-        <input type="password" name = "password" class="input" placeholder="Password">
+        <input type="text" name ="code" class="input" placeholder="enter your code">
     
-        <button class="form-btn" type="submit" >Log in </button>
+        <button class="form-btn" type="submit" >Verify</button>
       </form>
- <br>
+      <br>
       <p class="sign-up-label">
         Don't have an account?<a href ="/auth/signUp" class="sign-up-link"  role ="button" >Sign Up</a>
       </p>
-    
     </div>
+
+     <% if (!isLoggedin) { %>
+    <hr class="hrLine" />
+ <h1 class="alertuser" > login in Or Sign u to see more posts</h1>
+ <% } %>
+
 
         <script >
       function Navigate(route){

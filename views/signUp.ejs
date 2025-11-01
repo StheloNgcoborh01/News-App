@@ -5,25 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     
      <div class="form-container">
+
+         <button class="insideLogo" >
+        <img
+          class="logo"
+          src="/myImages/TeloNews.png"
+          alt="TeloNews Logo"
+        />
+      </button>
+
       <p class="title">Welcome</p>
 
-      <form class="form" Action = "/signUp"  method="POST"> 
+      <form class="form" action = "/auth/signUp"  method="POST"> 
 
         <input type="email"  name = "email" class = "input" placeholder="Email" required>
         <input type="password" name = "password" class="input" placeholder="Password" required>
         <input type="Confirmpassword" name = "Confirmpassword" class="input"  placeholder=" Confirm Password" required>
     
-        <button class="form-btn" type="submit">Sign Up</button>
+        <button class="form-btn" type="submit">Get Code</button>
 
       </form>
 
       <p class="sign-up-label">
-        already  have an account?<button class="sign-up-link" onclick= "Navigate('/login')" >Log in</button>
+        already  have an account?<button class="sign-up-link" onclick= "Navigate('/auth/login')" >Log in</button>
       </p>
       <div class="buttons-container">
 

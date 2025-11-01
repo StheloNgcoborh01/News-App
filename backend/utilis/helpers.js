@@ -10,6 +10,7 @@ export function generateCode() {
   return Array.from({ length: 5 }, () => Math.floor(Math.random() * 10) + 1).join('');
 }
 
+
 export async function sendCode(email, code) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -18,6 +19,7 @@ export async function sendCode(email, code) {
       pass: process.env.EMAIL_PASS,
     },
   });
+  
 
   await transporter.sendMail({
     from: process.env.EMAIL_USER,

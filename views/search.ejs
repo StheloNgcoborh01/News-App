@@ -28,19 +28,18 @@
         </div>
   
        <% })}; %>
-          <% } %>
 
+           <% } else if (searchedArticle && searchedArticle.length === 0) { %>
+    <h1>No Results for your search</h1>
+  <% } else { %>
+    <h1>Enter a search term to find news articles</h1>
+  <% } %>
+  
         <br />
         <hr />
         
       </div>
 
-     
-
- <% if (!isLoggedin) { %>
-    <hr class="hrLine" />
- <h1 class="alertuser" > login in Or Sign u to see more posts</h1>
- <% } %>
 
     <script >
       function Navigate(route){

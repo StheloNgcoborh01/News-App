@@ -5,11 +5,12 @@ import session from "express-session";
 import passport from "passport";
 import pgSession from "connect-pg-simple";
 import { db } from "./config/db.js";
-import authRoutes from "./routes/authRoutes.js";
+// import authRoutes from "./routes/authRoutes.js";
 import newsRoutes from "./routes/newsRoutes.js";
+import checking from "./routes/checking.js";
 
-import { Strategy } from "passport-local";
-import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+
+import "./controllers/authController.js";
 
 const app = express();
 const port = 3000;
@@ -38,7 +39,6 @@ app.use(
   })
 );
 
-db.connect();
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -60,10 +60,10 @@ passport.deserializeUser(async (id, done) => {
 });
 
 
+app.use("/auth", checking);
 
-app.use("/auth", authRoutes);
+
 app.use("/", newsRoutes);
-
 
 
 

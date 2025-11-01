@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-"scripts": {
-  "dev": "nodemon backend/index.js",
-  "start": "node backend/index.js"
-},
+  "scripts": {
+    "dev": "nodemon backend/index.js",
+    "start": "node backend/index.js"
+  },
   "author": "asanda Ngcobo",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "axios": "^1.9.0",
     "bcrypt": "^6.0.0",
+    "connect-flash": "^0.1.1",
     "connect-pg-simple": "^10.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",

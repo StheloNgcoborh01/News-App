@@ -1,15 +1,18 @@
 import { db } from "../config/db.js";
-import { CheckPassword, generateCode, sendCode } from "../utils/helpers.js";
+
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import { CheckPassword } from "../utils/helpers.js";
+import { Checkpassword } from "../utilis/helpers.js";
 
+
+
+import { generateCode,sendCode } from "../utilis/helpers.js";
 
 passport.use(
   "local-signUp",
-  new Strategy(
+  new LocalStrategy(
     {
       usernameField: "email",
       passwordField: "password",
@@ -44,7 +47,8 @@ passport.use(
                 "UPDATE userdetails SET password = $1 WHERE email = $2 RETURNING *",
                 [hash, email]
               );
-              return cb(null, newUser.rows[0]);
+
+           return cb(null, newUser.rows[0]);
             }
           } else {
             //if it a new user
@@ -55,7 +59,24 @@ passport.use(
               "INSERT INTO userdetails  (email , password) VALUES ($1, $2) RETURNING *",
               [email, hash]
             );
-            return cb(null, newUser.rows[0]);
+
+              const code = generateCode();
+                          
+              //storing the code temporary in db
+             await db.query(
+              "UPDATE userdetails SET verification_code = $1 WHERE email = $2 RETURNING *",
+               [code, email]
+               );
+
+             await sendCode(email, code);
+req.session.tempEmail = email;
+req.session.save((err) => {
+  if (err) {
+    return cb(err);
+  }
+
+   return cb(null, newUser.rows[0]);
+});
           }
         } catch (error) {
           return cb(null, false, { message: "unable to create account" });
@@ -67,7 +88,7 @@ passport.use(
 
 passport.use(
   "local",
-  new Strategy({ usernameField: "email" }, async function verify(
+  new LocalStrategy({ usernameField: "email" }, async function verify(
     email,
     password,
     cb

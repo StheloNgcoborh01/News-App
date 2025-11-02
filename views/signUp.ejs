@@ -20,14 +20,25 @@
       </button>
 
       <p class="title">Welcome</p>
+      <!-- Loader -->
 
-      <form class="form" action = "/auth/signUp"  method="POST"> 
+<div id="loader" class="loader" style="display:none;">
+  <div class="spinner"></div>
+</div>
+
+
+
+      <form id="signUpForm" class="form" action = "/auth/signUp"  method="POST"> 
 
         <input type="email"  name = "email" class = "input" placeholder="Email" required>
         <input type="password" name = "password" class="input" placeholder="Password" required>
         <input type="Confirmpassword" name = "Confirmpassword" class="input"  placeholder=" Confirm Password" required>
     
         <button class="form-btn" type="submit">Get Code</button>
+
+                <% if (error && error.length > 0) { %>
+       <div class="error-message"><%= error[0] %></div>
+      <% } %>
 
       </form>
 
@@ -53,11 +64,7 @@
       </div>
     </div>
 
-        <script >
-      function Navigate(route){
-        window.location.href = route;
-      }
-
+        <script src="/serverSide.js" >
     </script>
 </body>
 </html>

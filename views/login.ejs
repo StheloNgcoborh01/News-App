@@ -21,12 +21,21 @@
       </button>
       <p class="title">Welcome Back</p>
 
+      <div id="loader" class="loader" style="display:none;">
+  <div class="spinner"></div>
+</div>
+
         <form class="form" Action = "/auth/login"  method="POST"> 
 
         <input type="email" name ="email" class="input" placeholder="Email">
-        <input type="password" name = "password" class="input" placeholder="Password">
+        <input type="password" name ="password" class="input" placeholder="Password">
     
         <button class="form-btn" type="submit" >Log in </button>
+
+        <% if (error && error.length > 0) { %>
+       <div class="error-message"><%= error[0] %></div>
+      <% } %>
+
       </form>
  <br>
       <p class="sign-up-label">
@@ -35,11 +44,7 @@
     
     </div>
 
-        <script >
-      function Navigate(route){
-        window.location.href = route;
-      }
-
+        <script src="/serverSide.js" >
     </script>
 </body>
 </html>

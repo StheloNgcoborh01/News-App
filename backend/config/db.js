@@ -2,8 +2,7 @@ import pg from "pg";
 import pgSession from "connect-pg-simple";
 const { Pool } = pg;
 
-
- export const db = new Pool({
+export const db = new Pool({
   port: 5432,
   database: "News-app",
   user: "postgres",
@@ -15,7 +14,7 @@ export const testConnection = async () => {
   try {
     await db.connect();
     console.log("DB connected");
-     client.release();
+    client.release();
   } catch (err) {
     console.error("DB connection failed:", err);
   }

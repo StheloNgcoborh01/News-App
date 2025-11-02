@@ -6,85 +6,83 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Checkpassword } from "../utilis/helpers.js";
 
+import { generateCode, sendCode } from "../utilis/helpers.js";
 
+// passport.use(
+//   "local-signUp",
+//   new LocalStrategy(
+//     {
+//       usernameField: "email",
+//       passwordField: "password",
+//       passReqToCallback: true, // allows you to access `req` inside verify
+//     },
+//     async function verify(req, email, password, cb) {
+//       const CornfirmPassword = req.body.Confirmpassword;
 
-import { generateCode,sendCode } from "../utilis/helpers.js";
+//       if (!Checkpassword(password, CornfirmPassword)) {
+//         return cb(null, false, { message: "password does not match" });
+//       } else {
+//         try {
+//           //check if the email exist
+//           const result = await db.query(
+//             "SELECT * FROM userdetails WHERE email = $1",
+//             [email]
+//           );
+//           if (result.rows.length > 0) {
+//             //if the email is available
 
-passport.use(
-  "local-signUp",
-  new LocalStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password",
-      passReqToCallback: true, // allows you to access `req` inside verify
-    },
-    async function verify(req, email, password, cb) {
-      const CornfirmPassword = req.body.Confirmpassword;
+//             const user = result.rows[0];
+//             if (user.password) {
+//               return cb(null, false, {
+//                 message: "the account exist try to login",
+//               });
+//             } else {
+//               //if the password is null
+//               const saltRounds = parseInt(process.env.SALT_ROUNDS);
+//               const hash = await bcrypt.hash(password, saltRounds);
+//               console.log(hash);
+//               const newUser = await db.query(
+//                 "UPDATE userdetails SET password = $1 WHERE email = $2 RETURNING *",
+//                 [hash, email]
+//               );
 
-      if (!Checkpassword(password, CornfirmPassword)) {
-        return cb(null, false, { message: "password does not match" });
-      } else {
-        try {
-          //check if the email exist
-          const result = await db.query(
-            "SELECT * FROM userdetails WHERE email = $1",
-            [email]
-          );
-          if (result.rows.length > 0) {
-            //if the email is available
+//            return cb(null, newUser.rows[0]);
+//             }
+//           } else {
+//             //if it a new user
+//             const saltRounds = parseInt(process.env.SALT_ROUNDS);
+//             const hash = await bcrypt.hash(password, saltRounds);
+//             console.log(hash);
+//             const newUser = await db.query(
+//               "INSERT INTO userdetails  (email , password) VALUES ($1, $2) RETURNING *",
+//               [email, hash]
+//             );
 
-            const user = result.rows[0];
-            if (user.password) {
-              return cb(null, false, {
-                message: "the account exist try to login",
-              });
-            } else {
-              //if the password is null
-              const saltRounds = parseInt(process.env.SALT_ROUNDS);
-              const hash = await bcrypt.hash(password, saltRounds);
-              console.log(hash);
-              const newUser = await db.query(
-                "UPDATE userdetails SET password = $1 WHERE email = $2 RETURNING *",
-                [hash, email]
-              );
+//               const code = generateCode();
 
-           return cb(null, newUser.rows[0]);
-            }
-          } else {
-            //if it a new user
-            const saltRounds = parseInt(process.env.SALT_ROUNDS);
-            const hash = await bcrypt.hash(password, saltRounds);
-            console.log(hash);
-            const newUser = await db.query(
-              "INSERT INTO userdetails  (email , password) VALUES ($1, $2) RETURNING *",
-              [email, hash]
-            );
+//               //storing the code temporary in db
+//              await db.query(
+//               "UPDATE userdetails SET verification_code = $1 WHERE email = $2 RETURNING *",
+//                [code, email]
+//                );
 
-              const code = generateCode();
-                          
-              //storing the code temporary in db
-             await db.query(
-              "UPDATE userdetails SET verification_code = $1 WHERE email = $2 RETURNING *",
-               [code, email]
-               );
+//              await sendCode(email, code);
+// req.session.tempEmail = email;
+// req.session.save((err) => {
+//   if (err) {
+//     return cb(err);
+//   }
 
-             await sendCode(email, code);
-req.session.tempEmail = email;
-req.session.save((err) => {
-  if (err) {
-    return cb(err);
-  }
-
-   return cb(null, newUser.rows[0]);
-});
-          }
-        } catch (error) {
-          return cb(null, false, { message: "unable to create account" });
-        }
-      }
-    }
-  )
-);
+// return cb(null, newUser.rows[0]);
+// });
+//           }
+//         } catch (error) {
+//           return cb(null, false, { message: "unable to create account" });
+//         }
+//       }
+//     }
+//   )
+// );
 
 passport.use(
   "local",
@@ -101,6 +99,17 @@ passport.use(
       if (result.rows.length > 0) {
         const user = result.rows[0];
         const storedHashedPassword = user.password;
+
+        if (!password || !storedHashedPassword) {
+          console.error("Missing password or hash:", {
+            hasPassword: !!password, //returns boolean..like iya checka if password is or not
+            hasStoredHash: !!storedHashedPassword,
+          });
+          return cb(null, false, {
+            message: "please try signing up. No Account found",
+          });
+        }
+
         bcrypt.compare(password, storedHashedPassword, (err, valid) => {
           if (err) {
             console.error("Error comparing passwords:", err);
@@ -109,12 +118,12 @@ passport.use(
             if (valid) {
               return cb(null, user);
             } else {
-              return cb(null, false);
+              return cb(null, false, { message: "Passwords do not match." });
             }
           }
         });
       } else {
-        return cb("User not found");
+        return cb(null, false, { message: "User Email Not Found" });
       }
     } catch (err) {
       console.log(err);

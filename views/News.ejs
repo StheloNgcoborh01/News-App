@@ -1,17 +1,18 @@
+
 <%- include("partials/navBar") %>
     <!--the actullay news-->
 
     <div class="newsContainer">
 
-      <% if (SportsArticles  && SportsArticles.length > 0) { %>
-      <% { SportsArticles.forEach(article => { %>
+      <% if (articles  && articles.length > 0) { %>
+      <% { articles.forEach(article => { %>
           
       <div class="NewsCard">
         <img class="newsImage" src = "<%= article.urlToImage %> " alt="News Image" />
 
         <div class="newsMetaTop">
-          <span> category: Sports</span>
-          <span>date : <%= article.publishedAt %>  </span>
+          <span> category: All </span>
+          <span>date : <%= article.publishedAt %> </span>
         </div>
 
         <h1 class="title"><%= article.title %></h1>
@@ -29,9 +30,15 @@
           <% } %>
 
         <br />
-
+        
       </div>
 
+     
+
+ <% if (!isLoggedin) { %>
+    <hr class="hrLine" />
+ <h1 class="alertuser" > login in Or Sign u to see more posts</h1>
+ <% } %>
 
     <script >
       function Navigate(route){

@@ -5,15 +5,17 @@ import session from "express-session";
 import passport from "passport";
 import pgSession from "connect-pg-simple";
 import { db } from "./config/db.js";
-// import authRoutes from "./routes/authRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 import newsRoutes from "./routes/newsRoutes.js";
-import checking from "./routes/checking.js";
-
+// import checking from "./routes/checking.js";
+import flash from "connect-flash";
 
 import "./controllers/authController.js";
 
+
 const app = express();
 const port = 3000;
+
 
 dotenv.config();
 app.set("view engine", "ejs");
@@ -42,6 +44,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 passport.serializeUser((user, done) => {
   console.log("serializeUser:", user.id);
@@ -59,14 +62,17 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+app.use((req, res, next) => {
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
+  next();
+});
 
-app.use("/auth", checking);
+
+app.use("/auth", authRoutes);
 
 
 app.use("/", newsRoutes);
-
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

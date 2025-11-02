@@ -37,8 +37,8 @@ This project demonstrates integration of backend APIs, user authentication, and 
 
 ## 📸 Screenshots
 
-![login form](screenShoots\Screenshot(357).png)
-![Home Page](screenShoots\Screenshot(358).png)
+![login form](screenShoots\Screenshot (357).png)
+![Home Page](screenShoots\Screenshot (358).png)
 
 NB: Screenshot are insde the Screenshots Folder on the repo
 

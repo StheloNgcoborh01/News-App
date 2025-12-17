@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon backend/index.js",
+    "dev": "node backend/index.js",
     "start": "node backend/index.js"
   },
   "author": "asanda Ngcobo",

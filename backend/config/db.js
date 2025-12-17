@@ -2,12 +2,14 @@ import pg from "pg";
 import pgSession from "connect-pg-simple";
 const { Pool } = pg;
 
+
 export const db = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
   port: 5432,
-  database: "News-app",
-  user: "postgres",
-  password: "asanda0411",
-  host: "localhost",
+  ssl: { rejectUnauthorized: false }
 });
 
 export const testConnection = async () => {

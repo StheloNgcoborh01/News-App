@@ -76,7 +76,7 @@ router.get(
 );
 
 router.get(
-  "/google/index",
+  "https://news-app-l44t.onrender.com/auth/google/index",
   passport.authenticate("google", {
     successRedirect: "/",
     failureRedirect: "auth/signUp",

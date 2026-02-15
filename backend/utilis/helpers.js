@@ -1,30 +1,46 @@
 import nodemailer from "nodemailer";
 
-
 export function Checkpassword(password, CornfirmPassword) {
   return password === CornfirmPassword;
 }
 
-
 export function generateCode() {
-  return Array.from({ length: 5 }, () => Math.floor(Math.random() * 10) + 1).join('');
+  return Array.from({ length: 5 }, () =>
+    Math.floor(Math.random() * 10)
+  ).join("");
 }
 
+// Create transporter ONCE (outside function)
+const transporter = nodemailer.createTransport({
+  host: process.env.BREVO_HOST, // smtp-relay.brevo.com
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.BREVO_USER,
+    pass: process.env.BREVO_PASS,
+  },
+});
+
+// Optional: Check connection on startup
+transporter.verify((err, success) => {
+  if (err) {
+    console.error("SMTP Error:", err);
+  } else {
+    console.log("SMTP Ready ✅");
+  }
+});
 
 export async function sendCode(email, code) {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-  
+  try {
+    await transporter.sendMail({
+      from: `"News App" <${process.env.BREVO_USER}>`,
+      to: email,
+      subject: "5 digit code from News app",
+      text: `Your verification code is: ${code}`,
+    });
 
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: email,
-    subject: "5 digit code from News app",
-    text: code,
-  });
+    console.log("Email sent ✅");
+  } catch (err) {
+    console.error("Send mail failed ❌", err);
+  }
 }

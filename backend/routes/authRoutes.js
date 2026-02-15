@@ -79,7 +79,7 @@ router.get(
  "/google/index",
   passport.authenticate("google", {
     successRedirect: "/",
-    failureRedirect: "auth/signUp",
+    failureRedirect: "/auth/signUp",
   })
 );
 

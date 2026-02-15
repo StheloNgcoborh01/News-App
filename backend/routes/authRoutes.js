@@ -224,7 +224,7 @@ router.post("/forgotPassword", async (req, res) =>{
 
 });
 
-router.post("/forgotverify", (req, res) =>{
+router.post("/forgotverify", (req, res, next) =>{
 
 const { code} = req.body;
  const tempUser = req.session.ForgotTemp;
@@ -255,7 +255,7 @@ router.get("/newpassword", (req, res) =>{
 
 });
 
-router.post("/newPassword", async (req, res) =>{
+router.post("/newPassword", async (req, res, next) =>{
   const {password} = req.body;
   const tempUser = req.session.ForgotTemp;
 

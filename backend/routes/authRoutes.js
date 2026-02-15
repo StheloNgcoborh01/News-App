@@ -53,7 +53,7 @@ router.post("/signUp", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.render("signup", {
+    res.render("signUp", {
       error: ["Unable to process signup. Please try again."],
     });
   }

@@ -14,7 +14,7 @@ import "./controllers/authController.js";
 
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 
 
 dotenv.config();
@@ -74,6 +74,6 @@ app.use("/auth", authRoutes);
 
 app.use("/", newsRoutes);
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0" , () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

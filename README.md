@@ -8,6 +8,8 @@ This project demonstrates integration of backend APIs, user authentication, and 
 
 ---
 
+check out the live link here : ![newsApp](https://news-app-l44t.onrender.com)
+
 ## 🛠 Tech Stack
 
 - Backend:  Node.js, Express.js
